@@ -29,4 +29,5 @@ class RegisterView(View):
                                  last_name=last_name,
                                  password=password,
                                  email=email)
-        return render(request,'signup.html')
+        form = Userregisterform()
+        return render(request,'signup.html',{'form':form})
