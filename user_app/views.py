@@ -9,3 +9,5 @@ class RegisterView(View):
     def get(self,request):
         form = Userregisterform()
         return render(request,"signup.html",{"form":form})
+    
+    
