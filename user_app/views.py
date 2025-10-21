@@ -31,3 +31,11 @@ class RegisterView(View):
                                  email=email)
         form = Userregisterform()
         return render(request,'signup.html',{'form':form})
+
+#login view
+# get post    
+
+class LoginView(View):
+    def get(self,request):
+
+        return render(request,'signin.html')

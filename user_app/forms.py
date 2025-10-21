@@ -10,7 +10,6 @@ class Userregisterform(forms.ModelForm):
 
 
 
-
 # class Userregisterform(forms.Form):
 
 #     username =forms.CharField(max_length=50)
