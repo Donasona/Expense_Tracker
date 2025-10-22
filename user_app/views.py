@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 from django.views.generic import View
 
@@ -32,7 +32,7 @@ class RegisterView(View):
                                  password=password,
                                  email=email)
         form = Userregisterform()
-        return render(request,'signup.html',{'form':form})
+        return redirect("login")
 
 #login view
 # get post    
