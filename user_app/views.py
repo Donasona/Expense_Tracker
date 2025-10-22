@@ -6,7 +6,7 @@ from user_app.forms import Userregisterform
 
 from user_app.models import User
 
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 
 # Create your views here.
 class RegisterView(View):
@@ -49,7 +49,12 @@ class LoginView(View):
         user = authenticate(request,username=username,password=password)
         if user:
             login(request,user)
-            return render(request,"signup.html")
+            return redirect("signup")
         return render(request,"signin.html")
+
+class LogoutView(View):
+    def get(self,request):
+        logout(request)
+        return redirect("login")    
         
 
