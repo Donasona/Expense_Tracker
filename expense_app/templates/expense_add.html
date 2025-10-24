@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add Expense</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form}}
+        <!-- <label for="">Category:</label>
+        <input type="text" name="" id="">
+        <label for="">Title:</label>
+        <input type="text" name="" id="">
+        <label for="">Amount:</label>
+        <input type="number" name="" id="">
+        <label for="">Payment_date:</label>
+        <input type="date" name="" id=""> -->
+        <button type="submit">Add Expense</button>
+    </form>
+</body>
+</html>
