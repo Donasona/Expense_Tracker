@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View
 # Create your views here.
 from expense_app.forms import ExpenseForm
+from expense_app.models import Expense
 
 class Add_expense_view(View):
     def get(self,request):
@@ -17,3 +18,8 @@ class Add_expense_view(View):
             expense.user = request.user
             expense.save()
         return render(request,"expense_add.html",{"form":form})    
+    
+class ExpenseListView(View):
+    def get(self,request):
+        expenses = Expense.objects.filter(user =request.user)  
+        return render(request,"expense_list.html",{"expenses":expenses})  
