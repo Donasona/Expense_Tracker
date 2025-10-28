@@ -32,3 +32,4 @@ class ExpenseUpdateView(View):
         expense = Expense.objects.get(user= request.user,id=id)
         form =ExpenseForm(instance=expense)
         return render(request,"expense_update.html",{"form":form})
+    
