@@ -23,3 +23,12 @@ class ExpenseListView(View):
     def get(self,request):
         expenses = Expense.objects.filter(user =request.user)  
         return render(request,"expense_list.html",{"expenses":expenses})  
+    
+    # update view
+
+class ExpenseUpdateView(View):
+    def get(self,request,**kwargs):
+        id = kwargs.get("pk")
+        expense = Expense.objects.get(user= request.user,id=id)
+        form =ExpenseForm(instance=expense)
+        return render(request,"expense_update.html",{"form":form})
