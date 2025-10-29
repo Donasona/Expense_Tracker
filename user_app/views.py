@@ -7,6 +7,7 @@ from user_app.forms import Userregisterform
 from user_app.models import User
 
 from django.contrib.auth import authenticate,login,logout
+from expense_app.models import Expense
 
 # Create your views here.
 class RegisterView(View):
@@ -49,7 +50,7 @@ class LoginView(View):
         user = authenticate(request,username=username,password=password)
         if user:
             login(request,user)
-            return redirect("expense_list")
+            return redirect("home")
         return render(request,"signin.html")
 
 class LogoutView(View):
@@ -59,4 +60,5 @@ class LogoutView(View):
         
 class Baseview(View):
     def get(self,request):
-        return render(request,"home.html")
+        expenses = Expense.objects.filter(user = request.user)
+        return render(request,"home.html",{"expenses":expenses})
