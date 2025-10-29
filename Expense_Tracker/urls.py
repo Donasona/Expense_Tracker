@@ -28,6 +28,6 @@ urlpatterns = [
     path('list/',ExpenseListView.as_view(),name="expense_list"),
     path('update/<int:pk>',ExpenseUpdateView.as_view()),
     path("",Baseview.as_view(),name="home"),
-    path('delete/<int:pk>',Expensedelete.as_view()),
+    path('delete/<int:pk>',Expensedelete.as_view(),name="expense_delete"),
 
 ]
