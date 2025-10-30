@@ -40,6 +40,9 @@ class ExpenseUpdateView(UpdateView):
     form_class =ExpenseForm
     template_name ="expense_update.html"
     success_url = reverse_lazy("home")
+    
+    def get_queryset(self):
+        return Expense.objects.filter(user =self.request.user)
 
 
 class Expensedelete(View):
