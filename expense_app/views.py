@@ -61,4 +61,4 @@ class ExpenseSearchView(View):
         expenses = Expense.objects.filter(user =request.user)
         # filtering using the given query from the filtered expense above 
         if query:
-            expenses.filter(Q()) 
+            expenses = expenses.filter(Q(title_icontains =query) | Q(category_icontains =query)) 
