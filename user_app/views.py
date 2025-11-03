@@ -61,4 +61,9 @@ class LogoutView(View):
 class Baseview(View):
     def get(self,request):
         expenses = Expense.objects.filter(user = request.user)
-        return render(request,"home.html",{"expenses":expenses})
+        # collection of objects (obj1, obj2, obj3)
+        total_expense = 0
+        for i in expenses:
+            total_expense += i.amount
+
+        return render(request,"home.html",{"expenses":expenses,"total_expense":total_expense})
