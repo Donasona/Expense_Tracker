@@ -62,3 +62,4 @@ class ExpenseSearchView(View):
         # filtering using the given query from the filtered expense above 
         if query:
             expenses = expenses.filter(Q(title_icontains =query) | Q(category_icontains =query)) 
+        return render(request,self.template_name,{"expenses":expenses})   
