@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1>Expense List</h1>
-   
+    <form action="" >
+        {% csrf_token %}
+        {{expenses}}
+    </form>
 </body>
 </html>
