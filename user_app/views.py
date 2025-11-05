@@ -63,7 +63,7 @@ class Baseview(View):
         if request.user.is_authenticated:
 
             expenses = Expense.objects.filter(user = request.user)
-        # collection of objects (obj1, obj2, obj3)
+                                                                      # collection of objects (obj1, obj2, obj3)
             total_expense = sum(i.amount for i in expenses)
 
             return render(request,"home.html",{"expenses":expenses,"total_expense":total_expense})
