@@ -56,14 +56,15 @@ class LoginView(View):
 class LogoutView(View):
     def get(self,request):
         logout(request)
-        return redirect("login")    
+        return redirect("home")    
         
 class Baseview(View):
     def get(self,request):
-        expenses = Expense.objects.filter(user = request.user)
-        # collection of objects (obj1, obj2, obj3)
-        total_expense = 0
-        for i in expenses:
-            total_expense += i.amount
+        if request.user.is_authenticated:
 
-        return render(request,"home.html",{"expenses":expenses,"total_expense":total_expense})
+            expenses = Expense.objects.filter(user = request.user)
+        # collection of objects (obj1, obj2, obj3)
+            total_expense = sum(i.amount for i in expenses)
+
+            return render(request,"home.html",{"expenses":expenses,"total_expense":total_expense})
+        return render(request,"home.html")
